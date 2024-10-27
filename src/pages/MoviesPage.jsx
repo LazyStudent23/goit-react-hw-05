@@ -1,4 +1,4 @@
-import Movie from "../components/Movie/Movie";
+import Movie from "../components/Movie/Movie.jsx";
 
 const MoviesPage = () => {
   return <Movie />;
