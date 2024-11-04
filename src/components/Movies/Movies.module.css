@@ -1,0 +1,25 @@
+.img {
+  height: 300px;
+  object-fit: cover;
+}
+
+.link {
+  margin: 0 auto;
+}
+
+.ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.li {
+  width: calc((100% - 30px) / 6);
+  display: flex;
+  padding: 15px;
+  border: 2px solid grey;
+}
+
+.h2 {
+  margin: 0 auto;
+}

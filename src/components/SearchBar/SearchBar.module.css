@@ -1,0 +1,21 @@
+.inputWrapper {
+    position: relative;
+    margin: 0 auto;
+    max-width: 400px;
+}
+
+.headerInput {
+    padding: 10px;
+    font-size: 18px;
+    border-radius: 5px;
+    border: 2px solid white;
+    background-color: rgb(59, 59, 59);
+}
+
+.inputBtn {
+    top: 50%;
+    left: 1;
+    transform: translateY(-50%);
+    position: absolute;
+    background-color: transparent;
+}

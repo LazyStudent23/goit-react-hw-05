@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { getTrendings } from "../../services/Api";
 import { Link, useLocation } from "react-router-dom";
 
+import css from "./Home.module.css"
+
 const Home = () => {
   const [trendings, setTrendigs] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -26,20 +28,28 @@ const Home = () => {
   }, []);
 
   return (
-    <div>
-      <h1>Trendings Today</h1>
-      <ul>
+    <div className={css.wrapper}>
+      <div className={css.trendingsWrapper}>
+        <h1>Trendings Today</h1>
+      </div>
+      <ul className={css.ul}>
         {Array.isArray(trendings) &&
           trendings.map((item) => {
             return (
-              <li key={item.id}>
+              <li key={item.id} className={css.li}>
                 <Link
                   state={{
                     from: location,
                   }}
                   to={`/movies/${item.id}`}
+                  className={css.link}
                 >
-                  {item.title}
+                  <img
+                    src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
+                    alt=""
+                    className={css.img}
+                  />
+                  <h2 className={css.h2}>{item.title}</h2>
                 </Link>
               </li>
             );

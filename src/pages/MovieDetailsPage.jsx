@@ -2,13 +2,14 @@ import { useEffect, useState } from "react";
 import { getMovieDetails } from "../services/Api";
 import { Link, Outlet, useLocation, useParams } from "react-router-dom";
 
+import css from "../pages/MovieDetailsPage.module.css";
+
 const MovieDetailsPage = () => {
   const { movieId } = useParams();
   const [movieDetails, setMovieDetails] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const location = useLocation();
-  console.log("location: ", location);
 
   useEffect(() => {
     const fetchMovie = async () => {
@@ -35,13 +36,30 @@ const MovieDetailsPage = () => {
       {movieDetails !== null && (
         <div>
           <h1>{movieDetails.title}</h1>
-          <p>{movieDetails.overview}</p>
-          <p>{movieDetails.vote_average}</p>
+          <img
+            src={`https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`}
+            alt={movieDetails.title}
+            className={css.img}
+          />
+          <div>
+            <h2>Overview</h2>
+            <p>{movieDetails.overview}</p>
+          </div>
+          <div>
+            <h3>Average rating: {movieDetails.vote_average}</h3>
+          </div>
         </div>
       )}
       <div>
-        <Link to={"cast"}>Casts</Link>
-        <Link to={"reviews"}>Reviews</Link>
+        <h2>Additional information</h2>
+        <ul>
+          <li>
+            <Link to={"cast"}>Casts</Link>
+          </li>
+          <li>
+            <Link to={"reviews"}>Reviews</Link>
+          </li>
+        </ul>
       </div>
       <div>
         <Outlet />

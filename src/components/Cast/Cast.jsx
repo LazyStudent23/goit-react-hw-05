@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getMovieCast } from "../../services/Api";
 
+import css from "./Cast.module.css"
+
 const Cast = () => {
   const { movieId } = useParams();
   const [cast, setCast] = useState(null);
@@ -26,15 +28,16 @@ const Cast = () => {
   }, [movieId]);
   return (
     <div>
-      <ul>
+      <ul className={css.ul}>
         {Array.isArray(cast) &&
           cast.map((item) => {
             return (
-              <li key={item.cast_id}>
+              <li key={item.cast_id} className={css.li}>
                 <p>{item.character}</p>
                 <img
                   src={`https://image.tmdb.org/t/p/w500${item.profile_path}`}
-                  alt=""
+                  alt={`${item.character}`}
+                  className={css.img}
                 />
                 <p>{item.name}</p>
               </li>

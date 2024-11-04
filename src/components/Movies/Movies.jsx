@@ -3,6 +3,8 @@ import SearchBar from "../SearchBar/SearchBar";
 import { useEffect, useState } from "react";
 import { getMoviesByQuery } from "../../services/Api";
 
+import css from "./Movies.module.css"
+
 const Movies = () => {
   const [movies, setMoviews] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -41,18 +43,23 @@ const Movies = () => {
   return (
     <div>
       <SearchBar onSearch={onSearch} />
-      <ul>
+      <ul className={css.ul}>
         {Array.isArray(movies) &&
           movies.map((item) => {
             return (
-              <li key={item.id}>
+              <li key={item.id} className={css.li}>
                 <Link
                   state={{
                     from: location,
                   }}
                   to={`/movies/${item.id}`}
                 >
-                  {item.title}
+                  <img
+                    src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
+                    alt=""
+                    className={css.img}
+                  />
+                  <h2>{item.title}</h2>
                 </Link>
               </li>
             );

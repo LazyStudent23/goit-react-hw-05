@@ -21,7 +21,7 @@ function App() {
         to="/movies"
         end
       >
-        Movie
+        Movies
       </NavLink>
       <div className={css.pagesWrapper}>
         <Routes>
