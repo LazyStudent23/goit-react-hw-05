@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { getMoviesByQuery } from "../../services/Api";
 
 import css from "./Movies.module.css"
+import Loader from "../Loader/Loader";
 
 const Movies = () => {
   const [movies, setMoviews] = useState(null);
@@ -43,6 +44,7 @@ const Movies = () => {
   return (
     <div>
       <SearchBar onSearch={onSearch} />
+      {isLoading && <Loader />}
       <ul className={css.ul}>
         {Array.isArray(movies) &&
           movies.map((item) => {
@@ -53,13 +55,14 @@ const Movies = () => {
                     from: location,
                   }}
                   to={`/movies/${item.id}`}
+                  className={css.link}
                 >
                   <img
                     src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
-                    alt=""
+                    alt={item.title}
                     className={css.img}
                   />
-                  <h2>{item.title}</h2>
+                  <h2 className={css.h2}>{item.title}</h2>
                 </Link>
               </li>
             );

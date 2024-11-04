@@ -3,6 +3,7 @@ import { getTrendings } from "../../services/Api";
 import { Link, useLocation } from "react-router-dom";
 
 import css from "./Home.module.css"
+import Loader from "../Loader/Loader";
 
 const Home = () => {
   const [trendings, setTrendigs] = useState(null);
@@ -32,6 +33,7 @@ const Home = () => {
       <div className={css.trendingsWrapper}>
         <h1>Trendings Today</h1>
       </div>
+      {isLoading && <Loader />}
       <ul className={css.ul}>
         {Array.isArray(trendings) &&
           trendings.map((item) => {

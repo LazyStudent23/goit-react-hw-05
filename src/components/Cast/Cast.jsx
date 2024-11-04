@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { getMovieCast } from "../../services/Api";
 
 import css from "./Cast.module.css"
+import Loader from "../Loader/Loader";
 
 const Cast = () => {
   const { movieId } = useParams();
@@ -27,7 +28,8 @@ const Cast = () => {
     fetchMovieCast();
   }, [movieId]);
   return (
-    <div>
+    <div className={css.wrapper}>
+      {isLoading && <Loader />}
       <ul className={css.ul}>
         {Array.isArray(cast) &&
           cast.map((item) => {
@@ -36,7 +38,7 @@ const Cast = () => {
                 <p>{item.character}</p>
                 <img
                   src={`https://image.tmdb.org/t/p/w500${item.profile_path}`}
-                  alt={`${item.character}`}
+                  alt={item.character}
                   className={css.img}
                 />
                 <p>{item.name}</p>

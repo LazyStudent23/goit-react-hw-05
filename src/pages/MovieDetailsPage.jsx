@@ -3,6 +3,7 @@ import { getMovieDetails } from "../services/Api";
 import { Link, Outlet, useLocation, useParams } from "react-router-dom";
 
 import css from "../pages/MovieDetailsPage.module.css";
+import Loader from "../components/Loader/Loader";
 
 const MovieDetailsPage = () => {
   const { movieId } = useParams();
@@ -31,8 +32,9 @@ const MovieDetailsPage = () => {
   const backHref = location.state?.from ?? "/";
 
   return (
-    <div>
+    <div className={css.wrapper}>
       <Link to={backHref}>Back </Link>
+      {isLoading && <Loader />}
       {movieDetails !== null && (
         <div>
           <h1>{movieDetails.title}</h1>

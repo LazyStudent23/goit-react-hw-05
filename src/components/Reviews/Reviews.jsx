@@ -2,6 +2,9 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getMovieReview } from "../../services/Api";
 
+import css from './Reviews.module.css'
+import Loader from "../Loader/Loader";
+
 const Reviews = () => {
   const { movieId } = useParams();
   const [movieReviews, setMovieReviews] = useState(null);
@@ -28,17 +31,23 @@ const Reviews = () => {
     <div>
       {Array.isArray(movieReviews) && movieReviews.length === 0 && (
         <p>We don`t have any reviews for this movie</p>
-          )}
-          {Array.isArray(movieReviews) && movieReviews.map(item => {
-              return (
-                //   <li><span>`Author: ${item.author}`</span>
-                //   <span>`Text: ${item.content}`</span></li>
-                <p key={item.id}>
-                  <span>`Author: ${item.author}`</span>
-                  <span>`Text: ${item.content}`</span>
-                </p>
-              );
+      )}
+      {isLoading && <Loader />}
+      <ul className={css.ul}>
+        {Array.isArray(movieReviews) &&
+          movieReviews.map((item) => {
+            return (
+              <li key={item.id} className={css.li}>
+                <h3>Author: {item.author}</h3>
+                <p>Comment: {item.content}</p>
+              </li>
+              // <p key={item.id}>
+              //   <span>`Author: ${item.author}`</span>
+              //   <span>`Text: ${item.content}`</span>
+              // </p>
+            );
           })}
+      </ul>
     </div>
   );
 };
