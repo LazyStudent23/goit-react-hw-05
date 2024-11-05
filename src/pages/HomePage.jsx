@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { getTrendings } from "../services/Api"
 import { Link, useLocation } from "react-router-dom";
 
-import css from "./Home.module.css"
+import css from "./HomePage.module.css"
 import Loader from "../Loader/Loader";  
 
 const HomePage = () => {

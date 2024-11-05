@@ -1,9 +1,9 @@
 import { Link, useLocation, useSearchParams } from "react-router-dom";
 import SearchBar from "../SearchBar/SearchBar";
 import { useEffect, useState } from "react";
-import { getMoviesByQuery } from "../../services/Api";
+import { getMoviesByQuery } from "../services/Api";
 
-import css from "./Movies.module.css";
+import css from "./MoviesPage.module.css";
 import Loader from "../Loader/Loader";
 
 const MoviesPage = () => {
