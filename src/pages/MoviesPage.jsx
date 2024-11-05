@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { getMoviesByQuery } from "../services/Api";
 
 import css from "./MoviesPage.module.css";
-import Loader from "../Loader/Loader";
+import Loader from "../components/Loader/Loader";  
 
 const MoviesPage = () => {
   const [movies, setMoviews] = useState(null);
