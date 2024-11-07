@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { getTrendings } from "../../services/Api";
 
-import css from "./HomePage.module.css";
+import css from "../HomePage/HomePage.module.css";
 import Loader from "../../components/Loader/Loader";
 import MovieList from "../../components/MovieList/MovieList";
 
