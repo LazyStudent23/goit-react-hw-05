@@ -41,10 +41,6 @@ const Reviews = () => {
                 <h3>Author: {item.author}</h3>
                 <p>Comment: {item.content}</p>
               </li>
-              // <p key={item.id}>
-              //   <span>`Author: ${item.author}`</span>
-              //   <span>`Text: ${item.content}`</span>
-              // </p>
             );
           })}
       </ul>
