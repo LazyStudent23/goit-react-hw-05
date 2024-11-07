@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { getMovieDetails } from "../services/Api";
 import { Link, Outlet, useLocation, useParams } from "react-router-dom";
 
@@ -29,7 +29,7 @@ const MovieDetailsPage = () => {
     fetchMovie();
   }, [movieId]);
 
-  const backHref = location.state?.from ?? "/";
+    const backHref = useRef(location.state?.from ?? "/");
 
   return (
     <div className={css.wrapper}>
