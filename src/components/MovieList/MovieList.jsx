@@ -2,7 +2,7 @@ import { Link, useLocation } from 'react-router-dom';
 import css from './MovieList.module.css'
 import noImage from "../../images/noImage.jpg";
 
-const MovieList = (movies) => {
+const MovieList = ({movies}) => {
     console.log(movies);
     const location = useLocation();
 

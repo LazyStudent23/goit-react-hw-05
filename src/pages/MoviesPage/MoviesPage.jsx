@@ -1,10 +1,11 @@
 import { useSearchParams } from "react-router-dom";
-import SearchBar from "../components/SearchBar/SearchBar";
+import SearchBar from "../../components/SearchBar/SearchBar";
 import { useEffect, useState } from "react";
-import { getMoviesByQuery } from "../services/Api";
+import { getMoviesByQuery } from "../../services/Api";
 
-import Loader from "../components/Loader/Loader";
-import MovieList from "../components/MovieList/MovieList";
+import Loader from "../../components/Loader/Loader";
+import MovieList from "../../components/MovieList/MovieList";
+import NotFoundPage from "../NotFoundPage/NotFoundPage";
 
 const MoviesPage = () => {
   const [movies, setMoviews] = useState(null);
@@ -23,7 +24,7 @@ const MoviesPage = () => {
     const fetchMovieByQuery = async () => {
       try {
         if (!query) return;
-        setMoviews(null)
+        setMoviews(null);
         setIsLoading(true);
         const data = await getMoviesByQuery(query);
         console.log(data);
@@ -43,6 +44,7 @@ const MoviesPage = () => {
       <SearchBar onSearch={onSearch} />
       <MovieList movies={movies} />
       {isLoading && <Loader />}
+      {!isLoading && movies && movies.length === 0 && <NotFoundPage />}
     </div>
   );
 };

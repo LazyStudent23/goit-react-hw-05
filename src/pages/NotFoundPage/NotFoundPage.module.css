@@ -1,0 +1,19 @@
+.wrapper {
+    text-align: center;
+}
+
+.notFound {
+    font-size: 36px;
+    font-weight: 700;
+    margin-top: 32px;
+    color: #D61B2B;
+}
+
+/* .return {
+    color: #343434;
+    text-decoration: underline;
+}
+
+.return:hover {
+    color: #D61B2B;
+} */

@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from "react";
-import { getMovieDetails } from "../services/Api";
+import { getMovieDetails } from "../../services/Api";
 import { Link, Outlet, useLocation, useParams } from "react-router-dom";
 
 import css from "../pages/MovieDetailsPage.module.css";
-import Loader from "../components/Loader/Loader";
+import Loader from "../../components/Loader/Loader";
 
 const MovieDetailsPage = () => {
   const { movieId } = useParams();
